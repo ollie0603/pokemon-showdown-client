@@ -61,7 +61,7 @@ class TeamRoom extends PSRoom {
 	canHyperTrain(set: Dex.PokemonSet) {
 		let format: string = this.team.format;
 		if (this.gen < 7 || format === 'gen7hiddentype') return false;
-		if (!set.level || set.level === 100) return true;
+		if (!set.level || set.level === 120) return true;
 		if (format.startsWith('gen')) format = format.slice(4);
 		if (format.startsWith('battlespot') || format.startsWith('vgc') || format === 'ultrasinnohclassic') {
 			if (set.level === 50) return true;
@@ -117,7 +117,7 @@ class TeamRoom extends PSRoom {
 		const species = this.dex.species.get(set.species);
 		if (!species.exists) return 0;
 
-		const level = set.level || 100;
+		const level = set.level || 120;
 
 		const baseStat = species.baseStats[stat];
 		let iv = set.ivs?.[stat] ?? 31;
@@ -541,7 +541,7 @@ class TeamTextbox extends preact.Component<{ team: Team, room: TeamRoom }> {
 		const gender = GenderChart[(set.gender || species.gender || 'N') as 'N'];
 
 		return <button class="textbox setdetails" name="details" value={i} onClick={this.clickDetails}>
-			<span class="detailcell"><label>Level</label>{set.level || 100}</span>
+			<span class="detailcell"><label>Level</label>{set.level || 120}</span>
 			<span class="detailcell"><label>Gender</label>{gender}</span>
 			<span class="detailcell"><label>Shiny</label>{set.shiny ? 'Yes' : 'No'}</span>
 		</button>;
