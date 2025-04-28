@@ -81,7 +81,7 @@ export class Pokemon implements PokemonDetails, PokemonHealth {
 	fainted = false;
 	hp = 0;
 	maxhp = 1000;
-	level = 100;
+	level = 120;
 	gender: Dex.GenderName = 'N';
 	shiny = false;
 
@@ -3195,7 +3195,7 @@ export class Battle {
 		output.details = details;
 		output.name = name;
 		output.speciesForme = name;
-		output.level = 100;
+		output.level = 120;
 		output.shiny = false;
 		output.gender = '';
 		output.ident = (!isTeamPreview ? pokemonid : '');
@@ -3214,7 +3214,7 @@ export class Battle {
 			splitDetails.pop();
 		}
 		if (splitDetails[1]) {
-			output.level = parseInt(splitDetails[1].substr(1), 10) || 100;
+			output.level = parseInt(splitDetails[1].substr(1), 10) || 120;
 		}
 		if (splitDetails[0]) {
 			output.speciesForme = splitDetails[0];
@@ -3641,7 +3641,7 @@ export class Battle {
 			const side = this.getSide(args[1]);
 			side.clearPokemon();
 			for (const set of team) {
-				const details = set.species + (!set.level || set.level === 100 ? '' : `, L${set.level}`) +
+				const details = set.species + (!set.level || set.level === 120 ? '' : `, L${set.level}`) +
 					(!set.gender || set.gender === 'N' ? '' : `, ${set.gender}`) + (set.shiny ? ', shiny' : '');
 				const pokemon = side.addPokemon('', '', details);
 				if (set.item) pokemon.item = set.item;
