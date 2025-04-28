@@ -39,7 +39,7 @@ function exportSet(set: Dex.PokemonSet) {
 	}
 
 	// details
-	if (set.level && set.level !== 120) {
+	if (set.level && set.level !== 100) {
 		out += `Level: ${set.level}  \n`;
 	}
 	if (set.shiny) {
@@ -119,7 +119,7 @@ function PokemonSet({ set }: { set: Dex.PokemonSet }) {
 		{set.item ? <> @ {set.item} </> : <></>}
 		<br />
 		{set.ability ? <>Ability: {set.ability}<br /></> : <></>}
-		{set.level && set.level !== 120 ? <>Level: {set.level}<br /></> : <></>}
+		{set.level && set.level !== 100 ? <>Level: {set.level}<br /></> : <></>}
 		{set.shiny ? <>Shiny: Yes<br /></> : <></>}
 		{set.teraType ? <>Tera Type: {set.teraType}<br /></> : <></>}
 
