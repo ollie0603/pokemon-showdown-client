@@ -742,7 +742,7 @@ function pokeConvertInner($text)
 		{
 			$out[] = '  r-cure-status '.resolvePokemon($line).' slp';
 		}
-		else if (endsRemove($line, ' was frozen solid!>'))
+		else if (endsRemove($line, ' got frostbite!>'))
 		{
 			$out[] = '  r-status '.resolvePokemon(substr($line, 1)).' frz';
 		}
@@ -750,9 +750,9 @@ function pokeConvertInner($text)
 		{
 			$out[] = '  r-cure-status '.resolvePokemon(substr($line, 1)).' frz';
 		}
-		else if (endsRemove($line, ' is frozen solid!>'))
+		else if (endsRemove($line, ' got frostbite!>'))
 		{
-			$out[] = 'cant-move '.resolvePokemon(substr($line, 1)).' frozen';
+			$out[] = 'cant-move '.resolvePokemon(substr($line, 1)).' frostbitten';
 		}
 		else if (endsRemove($line, ' cut its own HP and maximized its Attack!>'))
 		{
