@@ -686,6 +686,7 @@ process.stdout.write("Building `data/teambuilder-tables.js`... ");
 				if (banlist.isBanned('item:' + item.id)) continue;
 			}
 			switch (id) {
+			// mainstays
 			case 'curiousbat':
 			case 'eggnog':
 			case 'frostorb':
@@ -694,9 +695,6 @@ process.stdout.write("Building `data/teambuilder-tables.js`... ");
 			case 'katana':
 			case 'nuptialveil':
 			case 'royaljelly':
-				pathwaysItems.push(id);
-				break;
-			// mainstays
 			case 'choiceband':
 			case 'choicespecs':
 			case 'eviolite':
