@@ -655,7 +655,7 @@ process.stdout.write("Building `data/teambuilder-tables.js`... ");
 
 		const itemList = Object.keys(Dex.data.Items);
 		itemList.sort();
-
+		const pathwaysItems = [['header', "Items from Pathways"]];
 		const greatItems = [['header', "Popular items"]];
 		const goodItems = [['header', "Items"]];
 		const specificItems = [['header', "Pok&eacute;mon-specific items"]];
@@ -686,6 +686,16 @@ process.stdout.write("Building `data/teambuilder-tables.js`... ");
 				if (banlist.isBanned('item:' + item.id)) continue;
 			}
 			switch (id) {
+			case 'curiousbat':
+			case 'eggnog':
+			case 'frostorb':
+			case 'goldentruffle':
+			case 'jokercard':
+			case 'katana':
+			case 'nuptialveil':
+			case 'royaljelly':
+				pathwaysItems.push(id);
+				break;
 			// mainstays
 			case 'choiceband':
 			case 'choicespecs':
