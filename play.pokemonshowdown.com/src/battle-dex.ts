@@ -735,6 +735,17 @@ export const Dex = new class implements ModdedDex {
 				name += '-f';
 			}
 
+			if (name === 'spectreon' || name === 'drakeon' || name === 'partner-pikachu' || name === 'partner-eevee' || name === 'blackflame-typhlosion' || name === 'shadowmane-luxray' || 
+				name === 'thousandold-dragonair' || name === 'swarmhive-shuckle' || name === 'alpha-unown' || name === 'alpha-unown-swarm' || name === 'subject84-joltik' || name === 'royalguard-combee' || 
+				name === 'ace-greninja' || name === 'greninja-bond' || name === 'ace-cinderace' || name === 'cinderace-bond' || name === 'ace-meowscarada' || name === 'meowscarada-bond' || 
+				name === 'dragonite-mega' || name === 'flygon-mega' || name === 'mightyena-mega' || name === 'mimikyu-mega' || name === 'volcarona-mega' || name === 'dragapult-mega' || name === 'hydreigon-mega' || 
+				name === 'togekiss-mega' || name === 'quagsire-mega' || name === 'kommo-o-mega' || name === 'glimmora-mega' || name === 'froslass-mega' || name === 'goodra-mega' || name === 'shedinja-mega' || 
+				name === 'baxcalibur-mega' || name === 'swanna-mega' || name === 'tropius-mega' || name === 'vikavolt-mega' || name === 'electrode-mega' || name === 'mismagius-mega' || name === 'krookodile-mega' || 
+				name === 'samurott-hisui-mega' || name === 'typhlosion-hisui-mega' || name === 'decidueye-hisui-mega') {
+					spriteData.url = '/sprites/' + dir + '/' + name + '.png';
+					return spriteData;
+			}
+			
 			spriteData.url += dir + '/' + name + '.png';
 		}
 
