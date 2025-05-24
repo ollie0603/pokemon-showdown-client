@@ -742,7 +742,7 @@ export const Dex = new class implements ModdedDex {
 				name === 'togekiss-mega' || name === 'quagsire-mega' || name === 'kommo-o-mega' || name === 'glimmora-mega' || name === 'froslass-mega' || name === 'goodra-mega' || name === 'shedinja-mega' || 
 				name === 'baxcalibur-mega' || name === 'swanna-mega' || name === 'tropius-mega' || name === 'vikavolt-mega' || name === 'electrode-mega' || name === 'mismagius-mega' || name === 'krookodile-mega' || 
 				name === 'samurott-hisui-mega' || name === 'typhlosion-hisui-mega' || name === 'decidueye-hisui-mega') {
-					spriteData.url = '/sprites/' + dir + '/' + name + '.png';
+					spriteData.url += '/sprites/' + dir + '/' + name + '.png';
 					return spriteData;
 			}
 			
