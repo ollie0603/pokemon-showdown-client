@@ -735,14 +735,14 @@ export const Dex = new class implements ModdedDex {
 				name += '-f';
 			}
 
-			if (name === 'spectreon' || name === 'drakeon' || name === 'partner-pikachu' || name === 'partner-eevee' || name === 'blackflame-typhlosion' || name === 'shadowmane-luxray' || 
-				name === 'thousandold-dragonair' || name === 'swarmhive-shuckle' || name === 'alpha-unown' || name === 'alpha-unown-swarm' || name === 'subject84-joltik' || name === 'royalguard-combee' || 
-				name === 'ace-greninja' || name === 'greninja-bond' || name === 'ace-cinderace' || name === 'cinderace-bond' || name === 'ace-meowscarada' || name === 'meowscarada-bond' || 
-				name === 'dragonite-mega' || name === 'flygon-mega' || name === 'mightyena-mega' || name === 'mimikyu-mega' || name === 'volcarona-mega' || name === 'dragapult-mega' || name === 'hydreigon-mega' || 
-				name === 'togekiss-mega' || name === 'quagsire-mega' || name === 'kommo-o-mega' || name === 'glimmora-mega' || name === 'froslass-mega' || name === 'goodra-mega' || name === 'shedinja-mega' || 
-				name === 'baxcalibur-mega' || name === 'swanna-mega' || name === 'tropius-mega' || name === 'vikavolt-mega' || name === 'electrode-mega' || name === 'mismagius-mega' || name === 'krookodile-mega' || 
-				name === 'samurott-hisui-mega' || name === 'typhlosion-hisui-mega' || name === 'decidueye-hisui-mega') {
-					spriteData.url += '/sprites/' + dir + '/' + name + '.png';
+			if (id === 'spectreon' || id === 'drakeon' || id === 'partnerpikachu' || id === 'partnereevee' || id === 'blackflametyphlosion' || id === 'shadowmaneluxray' || 
+				id === 'thousandolddragonair' || id === 'swarmhiveshuckle' || id === 'alphaunown' || id === 'alphaunownswarm' || id === 'subject84joltik' || id === 'royalguardcombee' || 
+				id === 'acegreninja' || id === 'greninjabond' || id === 'acecinderace' || id === 'cinderacebond' || id === 'acemeowscarada' || id === 'meowscaradabond' || 
+				id === 'dragonitemega' || id === 'flygonmega' || id === 'mightyenamega' || id === 'mimikyumega' || id === 'volcaronamega' || id === 'dragapultmega' || id === 'hydreigonmega' || 
+				id === 'togekissmega' || id === 'quagsiremega' || id === 'kommoomega' || id === 'glimmoramega' || id === 'froslassmega' || id === 'goodramega' || id === 'shedinjamega' || 
+				id === 'baxcaliburmega' || id === 'swannamega' || id === 'tropiusmega' || id === 'vikavoltmega' || id === 'electrodemega' || id === 'mismagiusmega' || id === 'krookodilemega' || 
+				id === 'samurotthisuimega' || id === 'typhlosionhisuimega' || id === 'decidueyehisuimega') {
+					spriteData.url = '/sprites/' + dir + '/' + name + '.png';
 					return spriteData;
 			}
 			
