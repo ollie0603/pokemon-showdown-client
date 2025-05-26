@@ -627,6 +627,14 @@ export const Dex = new class implements ModdedDex {
 		//     This defaults to graphicsGen, but if the graphicsGen doesn't have a sprite for the Pokemon
 		//     (eg. Darmanitan in graphicsGen 2) then we go up gens until it exists.
 		//
+		if (species.tags.includes("fakemon")) {
+			if (isFront) spriteData.url = `https://raw.githubusercontent.com/ollie0603/sprites/main/front${options.shiny ? '-shiny' : ''}/${species.id}.png`;
+			else spriteData.url = `https://raw.githubusercontent.com/ollie0603/sprites/main/back${options.shiny ? '-shiny' : ''}/${species.id}.png`;
+			spriteData.pixelated = true;
+			spriteData.gen = 5;
+			return spriteData;
+		}
+		
 		let graphicsGen = mechanicsGen;
 		if (Dex.prefs('nopastgens')) graphicsGen = 6;
 		if (Dex.prefs('bwgfx') && graphicsGen >= 6) graphicsGen = 5;
@@ -734,17 +742,6 @@ export const Dex = new class implements ModdedDex {
 			if (spriteData.gen >= 4 && miscData['frontf'] && options.gender === 'F') {
 				name += '-f';
 			}
-
-			if (id === 'spectreon' || id === 'drakeon' || id === 'partnerpikachu' || id === 'partnereevee' || id === 'blackflametyphlosion' || id === 'shadowmaneluxray' || 
-				id === 'thousandolddragonair' || id === 'swarmhiveshuckle' || id === 'alphaunown' || id === 'alphaunownswarm' || id === 'subject84joltik' || id === 'royalguardcombee' || 
-				id === 'acegreninja' || id === 'greninjabond' || id === 'acecinderace' || id === 'cinderacebond' || id === 'acemeowscarada' || id === 'meowscaradabond' || 
-				id === 'dragonitemega' || id === 'flygonmega' || id === 'mightyenamega' || id === 'mimikyumega' || id === 'volcaronamega' || id === 'dragapultmega' || id === 'hydreigonmega' || 
-				id === 'togekissmega' || id === 'quagsiremega' || id === 'kommoomega' || id === 'glimmoramega' || id === 'froslassmega' || id === 'goodramega' || id === 'shedinjamega' || 
-				id === 'baxcaliburmega' || id === 'swannamega' || id === 'tropiusmega' || id === 'vikavoltmega' || id === 'electrodemega' || id === 'mismagiusmega' || id === 'krookodilemega' || 
-				id === 'samurotthisuimega' || id === 'typhlosionhisuimega' || id === 'decidueyehisuimega') {
-					spriteData.url = '/sprites/' + dir + '/' + name + '.png';
-					return spriteData;
-			}
 			
 			spriteData.url += dir + '/' + name + '.png';
 		}
@@ -830,8 +827,11 @@ export const Dex = new class implements ModdedDex {
 
 		let top = Math.floor(num / 12) * 30;
 		let left = (num % 12) * 40;
-		let fainted = ((pokemon as Pokemon | ServerPokemon)?.fainted ?
-			`;opacity:.3;filter:grayscale(100%) brightness(.5)` : ``);
+		let fainted = ((pokemon as Pokemon | ServerPokemon)?.fainted ? `;opacity:.3;filter:grayscale(100%) brightness(.5)` : ``);
+		let species = Dex.species.get(id);
+    	if (species.tags.includes("fakemon")) {
+      		return `background:transparent url(https://raw.githubusercontent.com/ollie0603/sprites/main/front/${id}.png) no-repeat scroll;background-size:contain;width:40px;background-position:center${fainted}`
+    	}
 		return `background:transparent url(${Dex.resourcePrefix}sprites/pokemonicons-sheet.png?v18) no-repeat scroll -${left}px -${top}px${fainted}`;
 	}
 
@@ -879,6 +879,10 @@ export const Dex = new class implements ModdedDex {
 				spriteData.x = -2;
 				spriteData.y = 0;
 			}
+			if(Dex.species.get(pokemon.species).tags.includes("fakemon")) {
+        		spriteData.x = -3;
+        		spriteData.y = -2;
+      	}
 			return spriteData;
 		}
 		spriteData.spriteDir = 'sprites/gen5';
@@ -895,6 +899,10 @@ export const Dex = new class implements ModdedDex {
 		if (!pokemon) return '';
 		const data = this.getTeambuilderSpriteData(pokemon, gen);
 		const shiny = (data.shiny ? '-shiny' : '');
+		if (Dex.species.get(pokemon.species).tags.includes("fakemon")) {
+			let url = `https://raw.githubusercontent.com/ollie0603/sprites/main/front${data.shiny ? '-shiny' : ''}/${toID(pokemon.species)}.png`
+			return `background-image:url(${url});background-position:${data.x}px ${data.y}px;background-repeat:no-repeat;background-size:100px;`;
+		}
 		return `background-image:url(${Dex.resourcePrefix}${data.spriteDir}${shiny}/${data.spriteid}.png);background-position:${data.x}px ${data.y}px;background-repeat:no-repeat`;
 	}
 
@@ -902,7 +910,11 @@ export const Dex = new class implements ModdedDex {
 		let num = 0;
 		if (typeof item === 'string' && exports.BattleItems) item = exports.BattleItems[toID(item)];
 		if (item?.spritenum) num = item.spritenum;
-
+		if (num === 1000) {
+			let url = `https://raw.githubusercontent.com/ollie0603/sprites/main/items/${toID(item.name)}.png`
+			return `background:transparent url(${url}) no-repeat`;
+		}
+		
 		let top = Math.floor(num / 16) * 24;
 		let left = (num % 16) * 24;
 		return `background:transparent url(${Dex.resourcePrefix}sprites/itemicons-sheet.png?v1) no-repeat scroll -${left}px -${top}px`;
