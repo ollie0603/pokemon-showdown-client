@@ -229,7 +229,7 @@ export const Dex = new class implements ModdedDex {
 
 	pokeballs: string[] | null = null;
 
-	resourcePrefix = 'https://raw.githubusercontent.com/ollie0603/sprites/master/';
+	resourcePrefix = 'https://raw.githubusercontent.com/ollie0603'
 
 	fxPrefix = (() => {
 		const protocol = (window.document?.location?.protocol !== 'http:') ? 'https:' : '';
